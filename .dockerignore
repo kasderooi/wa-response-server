@@ -1,0 +1,222 @@
+# flyctl launch added from .gitignore
+# If you prefer the allow list template instead of the deny list, see community template:
+# https://github.com/github/gitignore/blob/main/community/Golang/Go.AllowList.gitignore
+#
+# Binaries for programs and plugins
+**/*.exe
+**/*.exe~
+**/*.dll
+**/*.so
+**/*.dylib
+
+# Test binary, built with `go test -c`
+**/*.test
+
+# Output of the go coverage tool, specifically when used with LiteIDE
+**/*.out
+
+# Dependency directories (remove the comment below to include it)
+# vendor/
+
+# Go workspace file
+**/go.work
+**/go.work.sum
+
+# env file
+**/.env
+
+**/.idea
+
+**/whatsapp.db
+
+**/*/.DS_STORE
+
+# flyctl launch added from .idea/.gitignore
+# Default ignored files
+.idea/shelf
+.idea/workspace.xml
+# Editor-based HTTP Client requests
+.idea/httpRequests
+# Datasource local storage ignored files
+.idea/dataSources
+.idea/dataSources.local.xml
+
+# flyctl launch added from vendor/github.com/caarlos0/env/v10/.gitignore
+vendor/github.com/caarlos0/env/v10/**/coverage.txt
+vendor/github.com/caarlos0/env/v10/**/bin
+vendor/github.com/caarlos0/env/v10/**/card.png
+vendor/github.com/caarlos0/env/v10/**/dist
+
+# flyctl launch added from vendor/github.com/go-chi/chi/v5/.gitignore
+vendor/github.com/go-chi/chi/v5/**/.idea
+vendor/github.com/go-chi/chi/v5/**/*.sw?
+vendor/github.com/go-chi/chi/v5/**/.vscode
+
+# flyctl launch added from vendor/github.com/go-sql-driver/mysql/.gitignore
+vendor/github.com/go-sql-driver/mysql/**/.DS_Store
+vendor/github.com/go-sql-driver/mysql/**/.DS_Store?
+vendor/github.com/go-sql-driver/mysql/**/._*
+vendor/github.com/go-sql-driver/mysql/**/.Spotlight-V100
+vendor/github.com/go-sql-driver/mysql/**/.Trashes
+vendor/github.com/go-sql-driver/mysql/**/Icon?
+vendor/github.com/go-sql-driver/mysql/**/ehthumbs.db
+vendor/github.com/go-sql-driver/mysql/**/Thumbs.db
+vendor/github.com/go-sql-driver/mysql/**/.idea
+
+# flyctl launch added from vendor/github.com/gorilla/websocket/.gitignore
+# Compiled Object files, Static and Dynamic libs (Shared Objects)
+vendor/github.com/gorilla/websocket/**/*.o
+vendor/github.com/gorilla/websocket/**/*.a
+vendor/github.com/gorilla/websocket/**/*.so
+
+# Folders
+vendor/github.com/gorilla/websocket/**/_obj
+vendor/github.com/gorilla/websocket/**/_test
+
+# Architecture specific extensions/prefixes
+vendor/github.com/gorilla/websocket/**/*.[568vq]
+vendor/github.com/gorilla/websocket/**/[568vq].out
+
+vendor/github.com/gorilla/websocket/**/*.cgo1.go
+vendor/github.com/gorilla/websocket/**/*.cgo2.c
+vendor/github.com/gorilla/websocket/**/_cgo_defun.c
+vendor/github.com/gorilla/websocket/**/_cgo_gotypes.go
+vendor/github.com/gorilla/websocket/**/_cgo_export.*
+
+vendor/github.com/gorilla/websocket/**/_testmain.go
+
+vendor/github.com/gorilla/websocket/**/*.exe
+
+vendor/github.com/gorilla/websocket/**/.idea
+vendor/github.com/gorilla/websocket/**/*.iml
+
+# flyctl launch added from vendor/github.com/jackc/pgx/v5/.gitignore
+# Compiled Object files, Static and Dynamic libs (Shared Objects)
+vendor/github.com/jackc/pgx/v5/**/*.o
+vendor/github.com/jackc/pgx/v5/**/*.a
+vendor/github.com/jackc/pgx/v5/**/*.so
+
+# Folders
+vendor/github.com/jackc/pgx/v5/**/_obj
+vendor/github.com/jackc/pgx/v5/**/_test
+
+# Architecture specific extensions/prefixes
+vendor/github.com/jackc/pgx/v5/**/*.[568vq]
+vendor/github.com/jackc/pgx/v5/**/[568vq].out
+
+vendor/github.com/jackc/pgx/v5/**/*.cgo1.go
+vendor/github.com/jackc/pgx/v5/**/*.cgo2.c
+vendor/github.com/jackc/pgx/v5/**/_cgo_defun.c
+vendor/github.com/jackc/pgx/v5/**/_cgo_gotypes.go
+vendor/github.com/jackc/pgx/v5/**/_cgo_export.*
+
+vendor/github.com/jackc/pgx/v5/**/_testmain.go
+
+vendor/github.com/jackc/pgx/v5/**/*.exe
+
+vendor/github.com/jackc/pgx/v5/**/.envrc
+vendor/github.com/jackc/pgx/v5/.testdb
+
+vendor/github.com/jackc/pgx/v5/**/.DS_Store
+
+# flyctl launch added from vendor/github.com/mattn/go-sqlite3/.gitignore
+vendor/github.com/mattn/go-sqlite3/**/*.db
+vendor/github.com/mattn/go-sqlite3/**/*.exe
+vendor/github.com/mattn/go-sqlite3/**/*.dll
+vendor/github.com/mattn/go-sqlite3/**/*.o
+
+# VSCode
+vendor/github.com/mattn/go-sqlite3/**/.vscode
+
+# Exclude from upgrade
+vendor/github.com/mattn/go-sqlite3/**/upgrade/*.c
+vendor/github.com/mattn/go-sqlite3/**/upgrade/*.h
+
+# Exclude upgrade binary
+vendor/github.com/mattn/go-sqlite3/**/upgrade/upgrade
+
+# flyctl launch added from vendor/github.com/microsoft/go-mssqldb/.gitignore
+vendor/github.com/microsoft/go-mssqldb/.idea
+vendor/github.com/microsoft/go-mssqldb/.connstr
+vendor/github.com/microsoft/go-mssqldb/**/.vscode
+vendor/github.com/microsoft/go-mssqldb/**/.terraform
+vendor/github.com/microsoft/go-mssqldb/**/*.tfstate*
+vendor/github.com/microsoft/go-mssqldb/**/*.log
+vendor/github.com/microsoft/go-mssqldb/**/*.swp
+vendor/github.com/microsoft/go-mssqldb/**/*~
+vendor/github.com/microsoft/go-mssqldb/**/coverage.json
+vendor/github.com/microsoft/go-mssqldb/**/coverage.txt
+vendor/github.com/microsoft/go-mssqldb/**/coverage.xml
+vendor/github.com/microsoft/go-mssqldb/**/testresults.xml
+vendor/github.com/microsoft/go-mssqldb/**/.azureconnstr
+
+
+# flyctl launch added from vendor/github.com/rs/zerolog/.gitignore
+# Compiled Object files, Static and Dynamic libs (Shared Objects)
+vendor/github.com/rs/zerolog/**/*.o
+vendor/github.com/rs/zerolog/**/*.a
+vendor/github.com/rs/zerolog/**/*.so
+
+# Folders
+vendor/github.com/rs/zerolog/**/_obj
+vendor/github.com/rs/zerolog/**/_test
+vendor/github.com/rs/zerolog/**/tmp
+
+# Architecture specific extensions/prefixes
+vendor/github.com/rs/zerolog/**/*.[568vq]
+vendor/github.com/rs/zerolog/**/[568vq].out
+
+vendor/github.com/rs/zerolog/**/*.cgo1.go
+vendor/github.com/rs/zerolog/**/*.cgo2.c
+vendor/github.com/rs/zerolog/**/_cgo_defun.c
+vendor/github.com/rs/zerolog/**/_cgo_gotypes.go
+vendor/github.com/rs/zerolog/**/_cgo_export.*
+
+vendor/github.com/rs/zerolog/**/_testmain.go
+
+vendor/github.com/rs/zerolog/**/*.exe
+vendor/github.com/rs/zerolog/**/*.test
+vendor/github.com/rs/zerolog/**/*.prof
+
+# flyctl launch added from vendor/github.com/sirupsen/logrus/.gitignore
+vendor/github.com/sirupsen/logrus/**/logrus
+vendor/github.com/sirupsen/logrus/**/vendor
+
+vendor/github.com/sirupsen/logrus/**/.idea
+
+# flyctl launch added from vendor/github.com/skip2/go-qrcode/.gitignore
+vendor/github.com/skip2/go-qrcode/**/*.sw*
+vendor/github.com/skip2/go-qrcode/**/*.png
+vendor/github.com/skip2/go-qrcode/**/*.directory
+vendor/github.com/skip2/go-qrcode/**/qrcode/qrcode
+
+# flyctl launch added from vendor/go.mau.fi/whatsmeow/proto/.gitignore
+vendor/go.mau.fi/whatsmeow/proto/**/protos.js
+
+# flyctl launch added from vendor/golang.org/x/sys/unix/.gitignore
+vendor/golang.org/x/sys/unix/**/_obj
+vendor/golang.org/x/sys/unix/**/unix.test
+
+# flyctl launch added from vendor/gorm.io/driver/mysql/.gitignore
+vendor/gorm.io/driver/mysql/**/TODO*
+vendor/gorm.io/driver/mysql/**/documents
+vendor/gorm.io/driver/mysql/**/coverage.txt
+vendor/gorm.io/driver/mysql/**/_book
+vendor/gorm.io/driver/mysql/**/.idea
+vendor/gorm.io/driver/mysql/**/vendor
+
+# flyctl launch added from vendor/gorm.io/driver/postgres/.gitignore
+vendor/gorm.io/driver/postgres/**/.idea
+
+# flyctl launch added from vendor/gorm.io/driver/sqlite/.gitignore
+vendor/gorm.io/driver/sqlite/**/.idea
+
+# flyctl launch added from vendor/gorm.io/gorm/.gitignore
+vendor/gorm.io/gorm/**/TODO*
+vendor/gorm.io/gorm/**/documents
+vendor/gorm.io/gorm/**/coverage.txt
+vendor/gorm.io/gorm/**/_book
+vendor/gorm.io/gorm/**/.idea
+vendor/gorm.io/gorm/**/vendor
+vendor/gorm.io/gorm/**/.vscode
+fly.toml

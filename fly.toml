@@ -1,0 +1,25 @@
+# fly.toml app configuration file generated for wa-response-server-cool-star-4077 on 2025-02-11T06:47:41+01:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = 'wa-response-server-cool-star-4077'
+primary_region = 'ams'
+
+[build]
+  [build.args]
+    GO_VERSION = '1.23.4'
+
+[env]
+  PORT = '8080'
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = 'stop'
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ['app']
+
+[[vm]]
+  size = 'shared-cpu-1x'

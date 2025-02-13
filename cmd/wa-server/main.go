@@ -38,6 +38,7 @@ func main() {
 func run(ctx context.Context, cfg config.Config, logger *logrus.Logger, errChan chan error) ([]func() error, error) {
 	var closers []func() error
 
+	logger.Info("starting db")
 	gormDb, sqlDb, err := infrastructure.InitDb(infrastructure.Database{
 		MaxConnLifetime: cfg.MaxConnLifetime,
 		MaxIdleConns:    cfg.MaxIdleConns,
@@ -50,18 +51,20 @@ func run(ctx context.Context, cfg config.Config, logger *logrus.Logger, errChan 
 	}
 	closers = append(closers, sqlDb.Close)
 
+	logger.Info("migrate db")
 	if err = infrastructure.MigrateDB(gormDb); err != nil {
 		return closers, fmt.Errorf("could not migrate DB: %v", err)
 	}
 
+	logger.Info("starting whatsapp client")
 	waClient := usecase.NewWhatsAppClient(sqlDb, cfg.DbDialect, cfg.DbLogLevel)
 	closers = append(closers, waClient.Stop)
-
 	err = waClient.Start()
 	if err != nil {
 		return closers, fmt.Errorf("could not start whats app client: %v", err)
 	}
 
+	logger.Info("starting webservice")
 	go func() {
 		errChan <- http_internal.StartWebservice(ctx, &cfg, waClient, logger)
 	}()

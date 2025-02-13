@@ -18,6 +18,9 @@ RUN go build -v -o /run-app ./cmd/wa-server
 # Create a smaller final image
 FROM debian:bookworm
 
+# Install CA certificates to fix TLS issues
+RUN apt-get update && apt-get install -y ca-certificates && rm -rf /var/lib/apt/lists/*
+
 # Copy the built binary from the builder stage
 COPY --from=builder /run-app /usr/local/bin/
 

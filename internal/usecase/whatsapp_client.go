@@ -2,6 +2,7 @@ package usecase
 
 import (
 	"context"
+	"database/sql"
 	"fmt"
 	"go.mau.fi/whatsmeow/store"
 	"log"
@@ -21,21 +22,23 @@ type WhatsAppClient struct {
 }
 
 // NewWhatsAppClient Initializes WhatsAppClient with an empty clients map
-func NewWhatsAppClient(dsn, dialect, logLevel string) (*WhatsAppClient, error) {
+func NewWhatsAppClient(db *sql.DB, dialect, logLevel string) *WhatsAppClient {
 	dbLog := waLog.Stdout("Database", logLevel, true)
-	container, err := sqlstore.New(dialect, dsn, dbLog)
-	if err != nil {
-		return nil, err
-	}
+	container := sqlstore.NewWithDB(db, dialect, dbLog)
 
 	return &WhatsAppClient{
 		container: container,
 		clients:   make(map[string]*whatsmeow.Client),
-	}, nil
+	}
 }
 
 // Start all known clients on program startup
 func (c *WhatsAppClient) Start() error {
+	err := c.container.Upgrade()
+	if err != nil {
+		return err
+	}
+
 	devices, err := c.container.GetAllDevices()
 	if err != nil {
 		return err
@@ -52,7 +55,6 @@ func (c *WhatsAppClient) Start() error {
 func (c *WhatsAppClient) ConnectClient(device *store.Device) {
 	client := whatsmeow.NewClient(device, waLog.Stdout("Client", "DEBUG", true))
 
-	// Register event handlers
 	client.AddEventHandler(func(evt interface{}) {
 		switch v := evt.(type) {
 		case *events.Message:
@@ -60,12 +62,10 @@ func (c *WhatsAppClient) ConnectClient(device *store.Device) {
 		}
 	})
 
-	// Lock the map before modifying it
 	c.mu.Lock()
 	c.clients[device.ID.String()] = client
 	c.mu.Unlock()
 
-	// Connect the client
 	err := client.Connect()
 	if err != nil {
 		log.Printf("Error connecting client %s: %v", device.ID.String(), err)
@@ -100,11 +100,10 @@ func (c *WhatsAppClient) Register() (*qrcode.QRCode, error) {
 	for evt := range qrChan {
 		if evt.Event == "code" {
 			fmt.Println("Scan the following QR code to log in:")
-			return qrcode.New(evt.Code, qrcode.Medium)
+			return qrcode.New(evt.Code, qrcode.Highest)
 		}
 	}
 
-	// Store new client in the map
 	c.mu.Lock()
 	c.clients[device.ID.String()] = client
 	c.mu.Unlock()
@@ -122,7 +121,6 @@ func (c *WhatsAppClient) Stop() error {
 		log.Printf("Client %s disconnected", id)
 	}
 
-	// Clear the clients map
 	c.clients = make(map[string]*whatsmeow.Client)
 	return nil
 }

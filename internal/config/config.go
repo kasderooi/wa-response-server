@@ -11,7 +11,7 @@ type Config struct {
 	HttpAddr      string        `env:"HTTP_ADDR" required:"false" envDefault:":8080"`
 	HttpIOTimeout time.Duration `env:"TIMEOUT" envDefault:"60s" desc:"timeout for HTTP read and write"`
 
-	DbDsn           string        `env:"DATABASE_URL" envDefault:"file:whatsapp.db?_foreign_keys=on" required:"true"`
+	DbDsn           string        `env:"DB_DSN" envDefault:"file:whatsapp.db?_foreign_keys=on" required:"true"`
 	DbDialect       string        `env:"DB_DIALECT" envDefault:"sqlite3"`
 	DbLogLevel      string        `env:"DB_LOG_LEVEL" envDefault:"DEBUG"`
 	MaxConnLifetime time.Duration `env:"DB_MAX_CONN_LIFETIME" envDefault:"5m"`

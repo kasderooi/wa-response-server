@@ -10,8 +10,8 @@ import (
 )
 
 const (
-	base = "%snHoi ik gebruik geen WhatsApp meer, je kan mij bereiken op Signal. https://signal.org/download/"
-	auto = "* Automated response *"
+	base = "%s/nHoi ik gebruik geen WhatsApp meer, je kan mij bereiken op Signal. \n https://signal.org/download/"
+	auto = "· _Automated response_ ·"
 )
 
 // HandleMessage processes incoming messages

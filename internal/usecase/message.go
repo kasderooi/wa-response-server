@@ -10,38 +10,18 @@ import (
 )
 
 const (
-	auto   = "* Automated response *"
-	signal = "[Signal](https://signal.org/download/)"
+	base = "%snHoi ik gebruik geen WhatsApp meer, je kan mij bereiken op Signal. https://signal.org/download/"
+	auto = "* Automated response *"
 )
 
 // HandleMessage processes incoming messages
 func HandleMessage(client *whatsmeow.Client, msg *events.Message) {
-	// Ignore messages from the bot itself and prevent infinite loops
-	if msg.Info.IsFromMe || strings.Contains(msg.Message.String(), auto) {
+	if !shouldReply(client, msg) {
 		return
 	}
 
-	// Check if this is a group message where the bot is tagged
-	mentioned := false
-	if msg.Info.IsGroup {
-		for _, mentionedJID := range msg.Message.ExtendedTextMessage.GetContextInfo().GetMentionedJid() {
-			if mentionedJID == client.Store.ID.ToNonAD().String() {
-				mentioned = true
-				break
-			}
-		}
-	}
-
-	// If it's a group message but the bot isn't tagged, ignore it
-	if msg.Info.IsGroup && !mentioned {
-		return
-	}
-
-	// Prepare the reply
-	reply := fmt.Sprintf("%s\nHoi ik gebruik geen WhatsApp meer, je kan mij bereiken op %s.", auto, signal)
-
-	// Send the reply
-	_, err := client.SendMessage(context.Background(), msg.Info.Sender, &waE2E.Message{
+	reply := fmt.Sprintf(base, auto)
+	_, err := client.SendMessage(context.Background(), msg.Info.Chat, &waE2E.Message{
 		Conversation: &reply,
 	})
 	if err != nil {
@@ -49,4 +29,19 @@ func HandleMessage(client *whatsmeow.Client, msg *events.Message) {
 	} else {
 		fmt.Printf("Replied to %s\n", msg.Info.Sender.User)
 	}
+}
+
+func shouldReply(client *whatsmeow.Client, msg *events.Message) bool {
+	if msg.Info.IsFromMe || strings.Contains(msg.Message.String(), auto) {
+		return false
+	}
+	if !msg.Info.IsGroup {
+		return true
+	}
+	for _, mentionedJID := range msg.Message.ExtendedTextMessage.GetContextInfo().GetMentionedJID() {
+		if mentionedJID == client.Store.ID.ToNonAD().String() {
+			return true
+		}
+	}
+	return false
 }

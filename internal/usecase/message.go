@@ -10,7 +10,7 @@ import (
 )
 
 const (
-	base = "%s/nHoi ik gebruik geen WhatsApp meer, je kan mij bereiken op Signal.\nhttps://signal.org/download/"
+	base = "%s\nHoi ik gebruik geen WhatsApp meer, je kan mij bereiken op Signal.\nhttps://signal.org/download/"
 	auto = "*· _Automated response_ ·*"
 )
 
